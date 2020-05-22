@@ -93,6 +93,10 @@ export function useActiveTodos() {
 export function useArchivedTodos() {
   const [archivedTodos] = useTodosStore((allTodos) => {
     return allTodos.filter((todo) => {
+      if (todo.isRemoved) {
+        return false;
+      }
+
       return todo.isArchived;
     });
   });
