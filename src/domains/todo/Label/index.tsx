@@ -20,12 +20,12 @@ export function TodoLabel({
   const [isFocused, setIsFocused] = useState(false);
 
   return (
-    <UIHolder
+    <Holder
       isFocused={isFocused}
       onMouseEnter={() => setIsFocused(true)}
       onMouseLeave={() => setIsFocused(false)}
     >
-      <UICheckHolder>
+      <CheckHolder>
         <input
           type="checkbox"
           checked={todo.isCompleted}
@@ -33,15 +33,15 @@ export function TodoLabel({
             onUpdateRequest({ isCompleted: event.target.checked });
           }}
         />
-      </UICheckHolder>
-      <UIInfoHolder>
+      </CheckHolder>
+      <InfoHolder>
         <TodoName
           currentName={todo.name}
           onNameChangeRequest={(newName) => {
             onUpdateRequest({ name: newName });
           }}
         />
-      </UIInfoHolder>
+      </InfoHolder>
       {isFocused && (
         <ToolsHolder>
           <ToolsPopoverBody>
@@ -52,20 +52,20 @@ export function TodoLabel({
           </ToolsPopoverBody>
         </ToolsHolder>
       )}
-    </UIHolder>
+    </Holder>
   );
 }
 
-const UIHolder = styled.div<{ isFocused: boolean }>`
+const Holder = styled.div<{ isFocused: boolean }>`
   display: flex;
   align-items: center;
   position: relative;
   z-index: ${(props) => (props.isFocused ? 2 : 1)};
 `;
-const UICheckHolder = styled.div`
+const CheckHolder = styled.div`
   margin-right: 5px;
 `;
-const UIInfoHolder = styled.div`
+const InfoHolder = styled.div`
   flex: 1;
 `;
 

@@ -1,32 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
-import { TodoList } from './TodoList';
-import { useActiveTodos, useTodosManager } from './useTodos';
 import { ArchivedTodos } from './ArchivedTodos';
-
-import { NewTodoForm } from './NewTodoForm';
+import { ActiveTodos } from './ActiveTodos';
 
 export function MyTodos() {
-  const activeTodos = useActiveTodos();
-  const { createTodo, updateTodo } = useTodosManager();
-
   return (
-    <UIHolder>
-      <TodoListHolder>
-        <TodoList todos={activeTodos} onTodoUpdateRequest={updateTodo} />
-      </TodoListHolder>
-      <NewTodoFormHolder>
-        <NewTodoForm onCreateRequest={createTodo} />
-      </NewTodoFormHolder>
+    <Holder>
+      <ActiveTodosHolder>
+        <ActiveTodos />
+      </ActiveTodosHolder>
       <ArchivedTodos />
-    </UIHolder>
+    </Holder>
   );
 }
 
-const UIHolder = styled.div``;
-const TodoListHolder = styled.div`
+const Holder = styled.div``;
+const ActiveTodosHolder = styled.div`
   margin-bottom: 20px;
-`;
-const NewTodoFormHolder = styled.div`
-  margin-bottom: 40px;
 `;

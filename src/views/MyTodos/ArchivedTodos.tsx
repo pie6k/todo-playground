@@ -11,17 +11,19 @@ export function ArchivedTodos() {
     return null;
   }
 
+  console.log('arch render');
+
   return (
-    <UIHolder>
+    <Holder>
       <TitleHolder>Archived Todos</TitleHolder>
       <TodoListHolder>
         <TodoList todos={archivedTodos} onTodoUpdateRequest={updateTodo} />
       </TodoListHolder>
-    </UIHolder>
+    </Holder>
   );
 }
 
-const UIHolder = styled.div``;
+const Holder = styled.div``;
 const TodoListHolder = styled.div`
   margin-bottom: 20px;
 `;

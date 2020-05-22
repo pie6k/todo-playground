@@ -11,10 +11,10 @@ interface Props {
 
 export function TodoList({ todos, onTodoUpdateRequest }: Props) {
   return (
-    <UIHolder>
+    <Holder>
       {todos.map((todo) => {
         return (
-          <UISingleTodoHolder key={todo.id}>
+          <SingleTodoHolder key={todo.id}>
             <TodoLabel
               todo={todo}
               onArchiveToggleRequest={() => {
@@ -29,14 +29,14 @@ export function TodoList({ todos, onTodoUpdateRequest }: Props) {
                 onTodoUpdateRequest(todo.id, todoUpdateInput);
               }}
             />
-          </UISingleTodoHolder>
+          </SingleTodoHolder>
         );
       })}
-    </UIHolder>
+    </Holder>
   );
 }
 
-const UIHolder = styled.div``;
-const UISingleTodoHolder = styled.div`
+const Holder = styled.div``;
+const SingleTodoHolder = styled.div`
   margin-bottom: 10px;
 `;
